@@ -32,7 +32,7 @@ func EncryptSecret(b64PlainText string) (string, error) {
 		return "", err
 	case len(decoded) < 1:
 		return "", errors.New(`plaintext to encrypt too short`)
-	case len(decoded) > 2048:
+	case len(decoded) > 4096:
 		return "", errors.New(`plaintext to encrypt is too long`)
 	}
 	out, err := KMS.Encrypt(&kms.EncryptInput{
