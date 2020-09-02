@@ -48,5 +48,4 @@ Most recently built using Go 1.14 and Node 14.7.0
 
 ## Infrastructure
 
-A huge thanks to fmalykh for contributing the terraform components that will deploy this. The ansible plays have been removed,
-but are easy to find at the commit tagged `ansible-removed`.
+Infrastructure is handled in a priavte repo

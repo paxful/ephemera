@@ -76,10 +76,10 @@
                              v-b-popover.hover="'An additional phrase to decrypt the secret, this will encrypt the secret a second time before sending. (32 characters max)'">
                     </b-col>
                     <b-col sm="1" align="right">
-                        <b-form-checkbox v-align size="sm" v-model="reqPass"></b-form-checkbox>
+                        <b-form-checkbox v-align size="sm" v-model="reqPass" @change="clearInput()"></b-form-checkbox>
                     </b-col>
                     <b-col sm="5" align="left" align-v="center">
-                        <b-form-input type="text" v-model="pass" :disabled="!reqPass" :state="shortPass" placeholder="Passphrase"></b-form-input>
+                        <b-form-input type="text" v-model="pass" v-on:keyup="checkLength" :disabled="!reqPass" :state="shortPass" placeholder="Passphrase"></b-form-input>
                     </b-col>
                 </b-row>
                 <b-row class="my-1" align-v="center">
@@ -124,7 +124,7 @@
                 pass: '',
                 reqIp: false,
                 ip: '',
-                maxLen: 512,
+                maxLen: 2048,
                 hours: 24,
                 message: {},
                 status: {},
@@ -156,6 +156,17 @@
             }
         },
         methods: {
+            clearInput() {
+                this.pass = '';
+                this.maxLen = 2048;
+            },
+            checkLength() {
+                if (this.pass.length === 0) {
+                    this.maxLen = 2048;
+                } else {
+                    this.maxLen = 1024;
+                }
+            },
             copyOk(b) {
                 this.copied = b
             },
