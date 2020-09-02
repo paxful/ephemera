@@ -48,4 +48,4 @@ Most recently built using Go 1.14 and Node 14.7.0
 
 ## Infrastructure
 
-Infrastructure is handled in a priavte repo
+Infrastructure is handled in a private repo
